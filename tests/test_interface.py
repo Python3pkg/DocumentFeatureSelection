@@ -32,7 +32,7 @@ class TestInterface(unittest.TestCase):
         cls.bool_cython = [True, False]
         cls.is_use_cache = [True, False]
         cls.is_use_memmap = [True, False]
-        cls.joblib_range = range(0, 2)
+        cls.joblib_range = list(range(0, 2))
         cls.path_shelve_file = './shelve'
         cls.path_sqlite3_persistent = './temp_db.sqlite3'
 
@@ -47,10 +47,10 @@ class TestInterface(unittest.TestCase):
         - memmapモード使う or not
         """
         shelve_obj = PersistentDict(self.path_shelve_file, 'c', 'json')
-        for key, value in self.input_dict.items(): shelve_obj[key] = value
+        for key, value in list(self.input_dict.items()): shelve_obj[key] = value
 
         sqlite3_dict_obj = SqliteDict(filename=self.path_sqlite3_persistent, autocommit=True)
-        for key, value in self.input_dict.items(): sqlite3_dict_obj[key] = value
+        for key, value in list(self.input_dict.items()): sqlite3_dict_obj[key] = value
 
         for method_name in self.method:
             for cython_flag in self.bool_cython:

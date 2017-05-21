@@ -46,10 +46,10 @@ def mutual_information(target, data, k=5):
         N01[word] = Np - N11[word]
         N00[word] = Nn - N10[word]
 
-    for w, c in N01.items():
+    for w, c in list(N01.items()):
         if c < 0: N01[w] = 0.0
 
-    for w, c in N00.items():
+    for w, c in list(N00.items()):
         if c < 0: N00[w] = 0.0
 
     # 総文書数

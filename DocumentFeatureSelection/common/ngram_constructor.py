@@ -29,7 +29,7 @@ def SUB_FUNC_ngram_data_conversion(key, docs, n, joiner_string='_'):
     if python_version > (3, 0, 0):
         assert isinstance(joiner_string, str)
     else:
-        assert isinstance(joiner_string, unicode)
+        assert isinstance(joiner_string, str)
 
     character_joiner = lambda ngram_tuple: joiner_string.join(ngram_tuple)
     generate_nGram = lambda ngram_d: [character_joiner(g) for g in ngram_d]
@@ -55,7 +55,7 @@ def ngram_constructor(labeled_documents, ngram, n_jobs):
             n=ngram,
             joiner_string='_'
         )
-        for key, docs in labeled_documents.items()
+        for key, docs in list(labeled_documents.items())
     )
     reconstructed_labeled_documents = dict(key_docs_tuples)
     logger.debug(msg='Finished making N-gram')

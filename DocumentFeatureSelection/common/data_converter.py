@@ -1,8 +1,8 @@
 #! -*- coding: utf-8 -*-
-from __future__ import absolute_import
-from __future__ import print_function
-from __future__ import unicode_literals
-from __future__ import division
+
+
+
+
 from DocumentFeatureSelection.common import utils, labeledMultiDocs2labeledDocsSet, ngram_constructor
 from DocumentFeatureSelection.models import DataCsrMatrix, AvailableInputTypes
 from DocumentFeatureSelection import init_logger
@@ -27,7 +27,7 @@ class DataConverter(object):
         - This function checks input data structure
         """
         assert isinstance(labeled_documents, (SqliteDict, dict))
-        for key, value in labeled_documents.items():
+        for key, value in list(labeled_documents.items()):
             docs_in_label = labeled_documents[key]
             if not isinstance(docs_in_label, list):
                 logger.error(msg=docs_in_label)
@@ -53,13 +53,13 @@ class DataConverter(object):
         term_frequency_distribution = {
             label: len(list(utils.flatten(document_lists)))
             for label, document_lists
-            in labeled_documents.items()
+            in list(labeled_documents.items())
         }
 
         # make list of distribution
         term_frequency_distribution_list = [0] * len(labeled_documents)
 
-        for label_string, n_doc in term_frequency_distribution.items():
+        for label_string, n_doc in list(term_frequency_distribution.items()):
             #term_index = label2id[numpy.where(label2id['key'] == label_string.encode('utf-8'))][0]['value']
             term_index = label2id[label_string]
             term_frequency_distribution_list[term_index] = n_doc
@@ -76,13 +76,13 @@ class DataConverter(object):
         n_doc_distribution = {
             label: len(document_lists)
             for label, document_lists
-            in labeled_documents.items()
+            in list(labeled_documents.items())
         }
 
         # make list of distribution
         n_doc_distribution_list = [0] * len(labeled_documents)
 
-        for label_string, n_doc in n_doc_distribution.items():
+        for label_string, n_doc in list(n_doc_distribution.items()):
             #docs_index = label2id[numpy.where(label2id['key'] == label_string.encode('utf-8'))][0]['value']
             docs_index = label2id[label_string]
             n_doc_distribution_list[docs_index] = n_doc

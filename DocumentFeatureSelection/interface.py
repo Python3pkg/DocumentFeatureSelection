@@ -127,9 +127,9 @@ def run_feature_selection(input_dict:AvailableInputTypes,
         ATTENTION: #label should be 2 always.
         """
         ### Consider shorter label name as positive label(positive and negative does NOT have any meaning in this context) ###
-        positive_label_name = sorted(input_dict.keys(), key=lambda x: len(x))[0]
+        positive_label_name = sorted(list(input_dict.keys()), key=lambda x: len(x))[0]
 
-        if len(input_dict.keys()) >= 3:
+        if len(list(input_dict.keys())) >= 3:
             raise KeyError('input_dict must not have more than 3 keys if you would like to use BNS.')
 
         matrix_data_object = data_converter.DataConverter().labeledMultiDocs2TermFreqMatrix(

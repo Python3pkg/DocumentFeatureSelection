@@ -6,7 +6,7 @@ __author__ = 'kensuke-mi'
 __version__ = '1.3.5'
 
 import sys
-print('python version {}'.format(sys.version_info))
+print(('python version {}'.format(sys.version_info)))
 import pip
 from setuptools import setup, find_packages
 from distutils.extension import Extension

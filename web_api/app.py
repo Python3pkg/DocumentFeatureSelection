@@ -82,7 +82,7 @@ class Sqlite3Handler(object):
             except:
                 #logger.error(traceback.format_exc())
                 # self.db_connection.rollback()
-                print(traceback.format_exc())
+                print((traceback.format_exc()))
                 return False
 
     def get_one_record(self, record_id)->Union[None, Dict[str,Any]]:

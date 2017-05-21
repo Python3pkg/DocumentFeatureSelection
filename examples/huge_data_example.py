@@ -41,7 +41,7 @@ scored_matrix_obj = interface.run_feature_selection(
         is_use_memmap=True
     )
 elapsed_time = time.time() - start
-print ("elapsed_time with cython:{} [sec]".format(elapsed_time))
+print(("elapsed_time with cython:{} [sec]".format(elapsed_time)))
 
 # Case of SqliteDict
 persisten_sqlite3_dict_obj = SqliteDict('./my_db.sqlite', autocommit=True)
@@ -57,5 +57,5 @@ scored_matrix_obj_ = interface.run_feature_selection(
         use_cython=True
     )
 elapsed_time = time.time() - start
-print ("elapsed_time with cython:{} [sec]".format(elapsed_time))
+print(("elapsed_time with cython:{} [sec]".format(elapsed_time)))
 os.remove('./my_db.sqlite')

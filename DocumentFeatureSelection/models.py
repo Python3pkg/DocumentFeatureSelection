@@ -68,7 +68,7 @@ class PersistentDict(dict):
 
     def dump(self, fileobj):
         if self.format == 'csv':
-            csv.writer(fileobj).writerows(self.items())
+            csv.writer(fileobj).writerows(list(self.items()))
         elif self.format == 'json':
             json.dump(self, fileobj, separators=(',', ':'))
         elif self.format == 'pickle':
@@ -329,8 +329,8 @@ class ScoredResultObject(object):
         else:
             dict_index_information = {}
 
-        dict_index_information['id2label'] = {value:key for key, value in label_group_dict.items()}
-        dict_index_information['id2vocab'] = {value:key for key, value in vocabulary.items()}
+        dict_index_information['id2label'] = {value:key for key, value in list(label_group_dict.items())}
+        dict_index_information['id2vocab'] = {value:key for key, value in list(vocabulary.items())}
 
         # TODO cython化を検討
         seq_score_objects = [

@@ -8,7 +8,7 @@ You should consider to install :mod:`Distribute` to run all tests with::
     $ python setup.py test
 
 """
-from __future__ import unicode_literals
+
 __author__ = 'kensuke-mi'
 import unittest
 
